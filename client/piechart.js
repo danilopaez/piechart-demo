@@ -7,33 +7,44 @@ PieSegmentOptions = {
   'No': { label: 'No', color: '#c9302c'  }
 };
 
-/// Template.piechart
 
-Template.piechart.pieSegments = function () {
-  // Returns the values of PieSegmentOptions, extended with `_id`
-  var result = [];
-  for (var id in PieSegmentOptions) {
-    result.push(_.extend({ _id: id }, PieSegmentOptions[id]));
-  }
-  return result;
-
-
-
-};
-
-Template.piechart.getCount = function (id) {
-  // Return the `.count` of a document by `_id`.  Guard against
-  // the document not being loaded yet.
-  var doc = Votos.findOne(id);
-  return doc ? doc.count : 0;
-};
 
 Template.piechart.helpers({
+  pieSegments: function () {
+        // Returns the values of PieSegmentOptions, extended with `_id`
+        var result = [];
+        for (var id in PieSegmentOptions) {
+          result.push(_.extend({ _id: id }, PieSegmentOptions[id]));
+        }
+        return result;
+
+
+
+  },
+
+  getCount: function (id) {
+      // Return the `.count` of a document by `_id`.  Guard against
+      // the document not being loaded yet.
+      var doc = Votos.findOne(id);
+      return doc ? doc.count : 0;
+  },
+
   yaVoto: function(){
     return Meteor.users.find({ 'profile.yavoto':1 }).count();
 
+  },
+
+  dataLoaded: function () {
+    return UsersSub.ready();
+  },
+
+  usersReady: function () {
+    return VotosSub.ready();
   }
+
 });
+
+
 
 Template.piechart.events({
   'click .increment-button': function (evt) {
@@ -44,13 +55,10 @@ Template.piechart.events({
   
 });
 
-Template.piechart.dataLoaded = function () {
-  return UsersSub.ready();
-};
 
-Template.piechart.usersReady = function () {
-  return VotosSub.ready();
-};
+
+
+
 
 /// Template.piecanvas
 
