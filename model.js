@@ -1,14 +1,14 @@
-Coins = new Meteor.Collection('coins');
+Votos = new Meteor.Collection('votos');
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    if (Coins.find().count() === 0) {
-      Coins.insert({ _id: 'heads', count: 1 });
-      Coins.insert({ _id: 'tails', count: 1 });
+  	 if (Votos.find().count() === 0) {
+      Votos.insert({ _id: 'Si', count: 0 });
+      Votos.insert({ _id: 'No', count: 0 });
     }
   });
 
-  Meteor.publish('coindata', function () {
-    return Coins.find();
+  Meteor.publish('PubVotos', function () {
+    return Votos.find();
   });
 }

@@ -1,9 +1,9 @@
-// XXX Should this really be a global?
-CoinsSub = Meteor.subscribe('coindata');
+
+VotosSub = Meteor.subscribe('PubVotos');
 
 PieSegmentOptions = {
-  'heads': { label: 'Heads', color: '#68d2f9' /* bluish */ },
-  'tails': { label: 'Tails', color: '#25bb29' /* greenish */ }
+  'Si': { label: 'Si', color: '#68d2f9' /* bluish */ },
+  'No': { label: 'No', color: '#25bb29' /* greenish */ }
 };
 
 /// Template.piechart
@@ -15,31 +15,28 @@ Template.piechart.pieSegments = function () {
     result.push(_.extend({ _id: id }, PieSegmentOptions[id]));
   }
   return result;
+
+
+
 };
 
 Template.piechart.getCount = function (id) {
   // Return the `.count` of a document by `_id`.  Guard against
   // the document not being loaded yet.
-  var doc = Coins.findOne(id);
+  var doc = Votos.findOne(id);
   return doc ? doc.count : 0;
 };
 
 Template.piechart.events({
   'click .increment-button': function (evt) {
     var id = evt.target.getAttribute("data-id");
-    Coins.update(id, { $inc: { count: 1 } });
-  },
-  'click .reset-button': function (evt) {
-    // Set all counts to 1.  Setting them to 0 seems to break
-    // the chart library.
-    _.each(PieSegmentOptions, function (opts, id) {
-      Coins.update(id, { $set: { count: 1 } });
-    });
+    Votos.update(id, { $inc: { count: 1 } });
   }
+  
 });
 
 Template.piechart.dataLoaded = function () {
-  return CoinsSub.ready();
+  return VotosSub.ready();
 };
 
 /// Template.piecanvas
@@ -73,7 +70,7 @@ Template.piecanvas.rendered = function () {
     }
   };
 
-  template.observeHandle = Coins.find().observe(observeCallbacks);
+  template.observeHandle = Votos.find().observe(observeCallbacks);
 };
 
 Template.piecanvas.destroyed = function () {

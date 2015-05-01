@@ -1,6 +1,6 @@
-piechart-demo
+Votos
 =============
 
-Demo of a basic chart
+Demo of a Votos
 
-http://piechart-demo.meteor.com
+http://votos-epy.meteor.com
