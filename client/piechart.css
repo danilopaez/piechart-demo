@@ -54,3 +54,17 @@ body {
 
 }
 
+
+
+
+
+
+@media only screen and (max-width: 550px){
+
+	#piechart{
+		width: 200px !important;
+		height: 200px !important;
+	}
+
+
+}
