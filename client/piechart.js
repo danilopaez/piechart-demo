@@ -1,5 +1,6 @@
 
 VotosSub = Meteor.subscribe('PubVotos');
+UsersSub = Meteor.subscribe('meteor_autoupdate_clientVersions');
 
 PieSegmentOptions = {
   'Si': { label: 'Si', color: '#449d44'  },
@@ -44,6 +45,10 @@ Template.piechart.events({
 });
 
 Template.piechart.dataLoaded = function () {
+  return UsersSub.ready();
+};
+
+Template.piechart.usersReady = function () {
   return VotosSub.ready();
 };
 

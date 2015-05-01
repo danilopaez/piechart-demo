@@ -18,9 +18,10 @@
         {{#each pieSegments}}
         <div>
           <span style="background-color: {{color}}">&nbsp;&nbsp;&nbsp;</span>&nbsp;
+          {{getCount _id}}
+          
           {{label}}
           
-          {{getCount _id}}
         </div>
         {{/each}}
       </div>
@@ -34,7 +35,8 @@
     {{/if}}
 
 
-  {{else}}
+  {{else }}
+    {{#if usersReady}}
      {{#each pieSegments}}
         <div>
       
@@ -44,6 +46,11 @@
         
         </div>
       {{/each}}
+      {{else}}
+        <div style="width:400px; height:400px; overflow: hidden">
+          {{> spinner}}
+        </div>
+      {{/if}}
     
   {{/if}}
   

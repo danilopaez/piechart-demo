@@ -17,8 +17,10 @@ Meteor.methods({
 
   'resetear': function (){
     
-    Meteor.users.remove({});
-    Votos.remove({});
+    Meteor.users.update({}, { $set: { 'profile.yavoto': false } }, {multi:1});    
+    Votos.update({}, { $set: { 'count': 0 } }, {multi:1});    
+    
+    
     
 
   }
