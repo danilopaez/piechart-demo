@@ -27,8 +27,16 @@ Template.piechart.getCount = function (id) {
   return doc ? doc.count : 0;
 };
 
+Template.piechart.helpers({
+  yaVoto: function(){
+    return Session.get('yaVoto');
+
+  }
+});
+
 Template.piechart.events({
   'click .increment-button': function (evt) {
+     Session.set({yaVoto: true});
     var id = evt.target.getAttribute("data-id");
     Votos.update(id, { $inc: { count: 1 } });
   }
