@@ -1,1 +1,56 @@
-/* CSS declarations go here */
+body {
+  display: flex;
+  min-height: 100vh;
+  margin: auto;
+  font-family: 'Roboto', sans-serif;
+ }
+.container {
+  margin: auto;
+ }
+ h1 {
+  margin: auto;
+  
+  margin-bottom:20px;
+ }
+
+ .itemLeyenda{
+ 	width:100px;
+ 	margin:10px auto;
+ }
+
+.leyenda{
+ 	
+ 	margin-top:30px;
+ 	
+ }
+
+
+.btn {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+ 
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  margin-top: 30px;
+  width:100%;
+  cursor: pointer;
+}
+
+.btn:hover {
+
+  text-decoration: none;
+}
+
+.Si {
+  background: #449d44;
+
+}
+
+.No {
+  background: #c9302c;
+
+}
+
