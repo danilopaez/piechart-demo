@@ -13,6 +13,15 @@ Meteor.methods({
   'usuarioYaVoto': function (){
   	
   	return Meteor.users.find({"_id" : Meteor.userId(), 'profile.yavoto':1 }).count();
-  }   
+  },
+
+  'resetear': function (){
+    
+    Meteor.users.remove({});
+    Votos.remove({});
+    
+
+  }
+
 });
 
