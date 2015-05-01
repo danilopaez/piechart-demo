@@ -2,8 +2,8 @@
 VotosSub = Meteor.subscribe('PubVotos');
 
 PieSegmentOptions = {
-  'Si': { label: 'Si', color: '#68d2f9' /* bluish */ },
-  'No': { label: 'No', color: '#25bb29' /* greenish */ }
+  'Si': { label: 'Si', color: '#449d44'  },
+  'No': { label: 'No', color: '#c9302c'  }
 };
 
 /// Template.piechart
@@ -29,16 +29,16 @@ Template.piechart.getCount = function (id) {
 
 Template.piechart.helpers({
   yaVoto: function(){
-    return Session.get('yaVoto');
+    return Meteor.users.find({ 'profile.yavoto':1 }).count();
 
   }
 });
 
 Template.piechart.events({
   'click .increment-button': function (evt) {
-     Session.set({yaVoto: true});
-    var id = evt.target.getAttribute("data-id");
-    Votos.update(id, { $inc: { count: 1 } });
+  
+    var voto = evt.target.getAttribute("data-id");
+    Meteor.call('votar',voto);
   }
   
 });

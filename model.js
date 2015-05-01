@@ -1,5 +1,6 @@
 Votos = new Meteor.Collection('votos');
 
+
 if (Meteor.isServer) {
   Meteor.startup(function () {
   	 if (Votos.find().count() === 0) {
@@ -12,10 +13,4 @@ if (Meteor.isServer) {
   Meteor.publish('PubVotos', function () {
     return Votos.find();
   });
-}
-
-if(Meteor.isClient){
-	Session.setDefault('yaVoto', false);
-
-
 }
