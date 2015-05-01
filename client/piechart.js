@@ -59,7 +59,7 @@ Template.piecanvas.rendered = function () {
 
   var ctx = template.find('#piechart').getContext("2d");
   var chart = new Chart(ctx).Doughnut([], {
-    animationEasing: "easeOutQuart"
+   
   });
   template.chart = chart;
 
