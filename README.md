@@ -3,7 +3,7 @@ Demo
 
 Demo of a Votar
 
-http://votos.epy.me
+http://epy.me/votar
 
 Repo
 =============
