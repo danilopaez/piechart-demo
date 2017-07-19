@@ -11,25 +11,25 @@
 
 
 <template name="piechart">
-  <div class="container"> 
+  <div class="container">
     {{#if yaVoto}}
       {{#if dataLoaded}}
         <h1>Resultados</h1>
         {{> piecanvas}}
-        
+
          <div class="leyenda">
           {{#each pieSegments}}
           <div class="itemLeyenda">
             <span style="background-color: {{color}}">&nbsp;&nbsp;&nbsp;</span>&nbsp;
             {{getCount _id}}
-            
+
             {{label}}
-            
+
           </div>
           {{/each}}
         </div>
 
-        
+
 
       {{else}}
         <div style="width:400px; height:400px; overflow: hidden">
@@ -40,13 +40,13 @@
 
     {{else }}
       {{#if usersReady}}
-        <h3>Estas de Acuerdo con el Voto Electronico?</h3>
+        <h3>Está disponible Service Workers en Chrome para iOS?</h3>
        {{#each pieSegments}}
           <div>
-        
+
             <input type=submit value={{label}}
                    class="increment-button btn {{_id}}" data-id={{_id}}>
-          
+
           </div>
         {{/each}}
         {{else}}
@@ -54,9 +54,9 @@
             {{> spinner}}
           </div>
         {{/if}}
-      
+
     {{/if}}
-  
+
     <p id="footer">by <a href="http://epy.me" target="_blank"><img id="logo" src="/images/logo.png" alt="e-Pymes"></a></p>
   </div>
 </template>
